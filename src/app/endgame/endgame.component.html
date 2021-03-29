@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>QuizzTogether - Salle d'Attente</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    body{
+    background-image: url(https://i.ytimg.com/vi/6rdkyNta6LY/maxresdefault.jpg);
+    }
+    h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+    .content {
+    background-color: rgba(218, 214, 214, 0.39);
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 16px 16px;
+    max-width: 960px;
+    border-radius: 8px;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25vh; /* poussé de la moitié de hauteur de viewport */
+    transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+  }
+
+  .titre{
+    text-align: center;
+    font-size : 200%;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  .card {
+    border-radius: 4px;
+    border: 1px solid #eee;
+    background-color: #fafafa;
+    height: 40px;
+    width: 200px;
+    margin: 0 8px 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    line-height: 24px;
+  }
+
+  .card-container .card:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .card.card-small {
+    height: 16px;
+    width: 168px;
+  }
+
+  .card-container .card:not(.highlight-card) {
+    cursor: pointer;
+  }
+
+  .card-container .card:not(.highlight-card):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  }
+
+  .card-container .card:not(.highlight-card):hover .material-icons path {
+    fill: rgb(105, 103, 103);
+  }
+
+  .card.highlight-card {
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+    border: none;
+    width: auto;
+    min-width: 30%;
+    position: relative;
+  }
+
+  .card.card.highlight-card span {
+    margin-left: 60px;
+  }
+  a,
+  a:visited,
+  a:hover {
+    color: #1976d2;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #125699;
+  }
+  .fa-gamepad{
+    margin-right:0.4em;
+  }
+
+  .fa-caret-right
+  {
+    margin-left:0.4em;
+    margin-top:0.2em;
+  }
+
+  .fa-custom{
+    font-size:1.4em;
+  }
+
+.players {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content: center;
+}
+.players li {
+  width:20%;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: 1em 0;
+  height: 1.6em;
+  border-radius: 4px;
+  text-align:center;
+  font-size: 200%;
+}
+.players li:nth-child(1){
+    background-color: #FDE992;
+}
+
+.players li:nth-child(2){
+    background-color: #DBE4EB;
+}
+
+.players li:nth-child(3){
+    background-color: #BE5504;
+}
+  </style>
+</head>
+
+      <div class="content" role="main" #startWindow>    
+        <h1>Et c'est une fin de partie!</h1>
+        
+        <div class="card-container">
+          <a class="card" target="_self" rel="noopener" (click)="start(startWindow)" routerLink="/attente">
+            <i class="fa fa-gamepad fa-2x"></i> 
+            <span>Nouvelle partie</span>
+            <i class="fa fa-caret-right fa-custom"></i> 
+          </a>
+        </div>
+      </div>
+      <ul class="players">
+        <li *ngFor="let player of players">
+          {{player.name}} : {{player.points}} points
+        </li>
+      </ul>
+
+</html>
