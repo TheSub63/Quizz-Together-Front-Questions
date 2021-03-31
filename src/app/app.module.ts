@@ -9,6 +9,7 @@ import { PartieComponent } from './partie/partie.component';
 import { TimerComponent } from './timer/timer.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { EndgameComponent } from './endgame/endgame.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { EndgameComponent } from './endgame/endgame.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     NgCircleProgressModule.forRoot({
       // set defaults here
       radius: 100,
@@ -32,7 +34,7 @@ import { EndgameComponent } from './endgame/endgame.component';
     RouterModule.forRoot([
     {path: 'attente', component: AttenteComponent},
     {path: 'partie', component:PartieComponent},
-    {path: 'endgame', component:EndgameComponent}
+    {path: 'endgame/:id', component:EndgameComponent}
     ])
   ],
   providers: [],
